@@ -1,0 +1,42 @@
+.upload-section form {
+  width: 50%;
+  padding: 10px 0;
+  margin: 20px auto;
+  border: 1px dashed #5a3e7d;
+}
+
+.upload-section form input {
+  margin: 15px;
+}
+
+.upload-section form .upload-button {
+  padding: 5px 17px;
+  background-color: #a487c7;
+  color: #fff;
+}
+
+.upload-section form .choose-button {
+  width: 100%;
+}
+.upload-section form .upload-button:disabled {
+  background-color: #c2b5d222;
+  color: rgba(0, 0, 0, 0.262);
+}
+.delete-btn {
+  display: block;
+  color: #fff;
+  background: #ff0000c2;
+  padding: 5px 10px;
+  border: 1px solid #000;
+  margin: 10px auto;
+}
+audio {
+  filter: sepia(67%) saturate(400%) grayscale(0) contrast(200%)
+    hue-rotate(214deg) invert(12%);
+}
+@media screen and (max-width: 780px) {
+  .upload-section form {
+    width: 60%;
+    padding: 15px;
+  }
+}
