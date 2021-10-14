@@ -9,19 +9,19 @@ const UsersCards = () => {
   const [userList, setUserList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [openModal, toggleModal] = useState(false);
-  const [user, setUser] = useState({});
+  const [userId, setUserId] = useState('');
 
   useEffect(() => {
     setLoading(true);
     getUsers()
       .then((res) => setUserList(res.data))
-      .catch((err) => console.log('error',err.message))
+      .catch((err) => console.log('error', err.message))
       .finally(setLoading(false));
-  }, [openModal]);
+  }, []);
 
-  const openAudioModal = (user) => {
+  const openAudioModal = (id) => {
     toggleModal(true);
-    setUser(user);
+    setUserId(id);
   };
   return loading ? (
     <Loader />
@@ -34,13 +34,13 @@ const UsersCards = () => {
         {userList.map((user) => (
           <User
             key={user._id}
-            handleClick={() => openAudioModal(user)}
+            handleClick={() => openAudioModal(user._id)}
             username={user.name}
             userEmail={user.email}
           />
         ))}
       </div>
-      {openModal && <AudioplayerModal toggleModal={toggleModal} user={user} />}
+      {openModal && <AudioplayerModal toggleModal={toggleModal} id={userId} />}
     </>
   );
 };

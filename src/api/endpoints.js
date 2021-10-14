@@ -1,3 +1,3 @@
 export const API_ENDPOINTS = {
-  user: `/user`,
+  user: '/user',
 };
