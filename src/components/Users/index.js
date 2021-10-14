@@ -15,9 +15,9 @@ const UsersCards = () => {
     setLoading(true);
     getUsers()
       .then((res) => setUserList(res.data))
-      .catch((err) => console.log(err))
+      .catch((err) => console.log('error',err.message))
       .finally(setLoading(false));
-  }, []);
+  }, [openModal]);
 
   const openAudioModal = (user) => {
     toggleModal(true);

@@ -1,6 +1,7 @@
 .card-content {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card-heading {

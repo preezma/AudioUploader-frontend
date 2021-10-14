@@ -27,10 +27,10 @@ const AudioplayerModal = ({ user, toggleModal }) => {
       .then((res) => {
         setAudio(res.data.audio);
         setFile(null);
-
+        reset();
       })
       .catch((err) => {
-        console.log("error", err);
+        console.log("error", err.message);
       })
       .finally(() => setLoading(false));
   }
@@ -38,8 +38,7 @@ const AudioplayerModal = ({ user, toggleModal }) => {
     ref.current.value = "";
   };
   const handleDeleteAudioFile = (audio) => {
-    deleteFile(audio).then(() => 
-    {
+    deleteFile(audio).then(() => {
       setAudio("");
       reset();
     });
@@ -53,7 +52,7 @@ const AudioplayerModal = ({ user, toggleModal }) => {
           <input
             type="file"
             className="choose-button"
-            accept="audio/mp3,audio/*;capture=microphone"
+            accept="audio/*"
             onChange={(e) => setFile(e.target.files[0])}
             ref={ref}
           />
@@ -62,8 +61,8 @@ const AudioplayerModal = ({ user, toggleModal }) => {
               type="button"
               className="upload-button"
               onClick={upload}
-              value='Upload'
-              disabled={file===null}
+              value="Upload"
+              disabled={file === null}
             />
           </div>
         </form>
@@ -71,7 +70,7 @@ const AudioplayerModal = ({ user, toggleModal }) => {
         {audio && (
           <Player
             file={`${url}/audio/${audio}`}
-            deleteAudio={handleDeleteAudioFile(user._id)}
+            deleteAudio={() => handleDeleteAudioFile(user._id)}
           />
         )}
       </div>
